@@ -14,6 +14,7 @@ $(".login").click( (e) => {
 		success: function (response) {
 			login = response;
 			if (login == "true") {
+				sessionStorage.setItem('loginStatus', 'true');
 				window.location = "dashboard.html";
 			}
 			else {

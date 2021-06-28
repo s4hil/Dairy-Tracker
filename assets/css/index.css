@@ -36,9 +36,9 @@
 	color: white;
 }
 .header span:nth-child(2){
-	background-color: var(--primary-light);
-	color: var(--primary-dark);
-	padding: 0px 7px 0px 7px;
+	color: #fff;
+	padding: 3px;
+	border-radius: 3px;
 }
 
 @media only screen and (max-width: 768px){
