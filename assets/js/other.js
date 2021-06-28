@@ -1,5 +1,10 @@
 $(document).ready(()=>{
-
+	// Check if the user is logged in
+	function checkLogin() {
+		if (sessionStorage.getItem('loginStatus') != 'true') {
+			$(".wrapper").remove();
+		}
+	}
 	// Add item record
 	$(".addItem").click((e)=>{
 		e.preventDefault();
@@ -18,6 +23,7 @@ $(document).ready(()=>{
 			dataType: "json",
 			success: function (data) {
 				$(".msg").html("<div class='alert alert-warning'><i class='fas fa-info-circle'></i> "+ data +"</div>")
+				$(".form")[0].reset();
 			},
 			error: function () {
 				console.log("error with add rec req");

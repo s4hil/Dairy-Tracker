@@ -1,5 +1,14 @@
 $(document).ready(()=>{
 
+	// Check if the user is logged in
+	function checkLogin() {
+		if (sessionStorage.getItem('loginStatus') != 'true') {
+			$(".wrapper").remove();
+		}
+	}
+	checkLogin();
+
+
 	$(".load").click((e)=>{
 		e.preventDefault();
 
@@ -66,7 +75,7 @@ $(document).ready(()=>{
 					let purchasedItems = x.purchasedItems;
 					let purchasedItemsVal = "";
 					for(let i = 0; i < purchasedItems.length; i++){
-						purchasedItemsVal += "Date:"+ purchasedItems[i].date +"<br/>Item: "+ purchasedItems[i].item +"<br>";
+						purchasedItemsVal += "=>"+purchasedItems[i].date +" - <b>"+ purchasedItems[i].item +"</b> ("+ purchasedItems[i].quantity +")<br>";
 					}
 					$("#purchased-items").html(purchasedItemsVal);
 				}
