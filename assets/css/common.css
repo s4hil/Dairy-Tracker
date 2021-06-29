@@ -1,3 +1,7 @@
+img[alt="www.000webhost.com"] {
+	display: none !important;
+}
+
 :root{
 	--primary-dark: #283149;
 	--secondary-dark: #404B69;

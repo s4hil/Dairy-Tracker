@@ -44,7 +44,7 @@
             let data = {date: date, quantity:quantity};
             let dataJSON = JSON.stringify(data);
             $.ajax({
-                url: "script.php",
+                url: "assets/php/overideScript.php",
                 method: "POST",
                 data: dataJSON,
                 dataType: "json",
