@@ -19,6 +19,9 @@
         form {
             width: 30%;
         }
+        img[alt="www.000webhost.com"] {
+        	display: none !important;
+        }
     </style>
 </head>
 <body>
@@ -53,7 +56,7 @@
                     count = Number(counter) + 1;
                     $("#counter").val(count);
 
-                    let newDate = count+"/6/2021";
+                    let newDate = count+"/5/2021";
                     $("#date").val(newDate);
                     $("#quantity").val("");
                     $("#quantity")[0].focus();
