@@ -1,10 +1,4 @@
 $(document).ready(()=>{
-	// Check if the user is logged in
-	function checkLogin() {
-		if (sessionStorage.getItem('loginStatus') != 'true') {
-			$(".wrapper").remove();
-		}
-	}
 	// Months Array
 	let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -12,10 +6,9 @@ $(document).ready(()=>{
 	let now = new Date();
 	let monthIndex = now.getMonth();
 	let year = now.getFullYear();
-	let monthYear = months[monthIndex]+"/"+year;
+	let monthYear = months[monthIndex-1]+"/"+year;
 
 	// Get data from server
-	;
 	let data = { month:monthIndex };
 	let dataJSON = JSON.stringify(data);
 	$.ajax({

@@ -1,10 +1,5 @@
 $(document).ready(()=>{
-	// Check if the user is logged in
-	function checkLogin() {
-		if (sessionStorage.getItem('loginStatus') != 'true') {
-			$(".wrapper").remove();
-		}
-	}
+	
 	// Add item record
 	$(".addItem").click((e)=>{
 		e.preventDefault();

@@ -1,5 +1,6 @@
 <?php
 	include 'config.php';
+	include '../../loginCheck.php';
 	header('Access-Control-Allow-Origin');
 	$data = json_decode(file_get_contents("php://input"), true);
 
@@ -10,8 +11,10 @@
 	{
 		global $conn;
 
+		$user_id = $_SESSION['userID'];
+
 		$dbDate = $date."/".$month."/2021";
-		$sql = "SELECT * FROM `dairy_records` WHERE `month` = '$month' AND `date` = '$dbDate' LIMIT 1";
+		$sql = "SELECT * FROM `dairy_records` WHERE `month` = '$month' AND `date` = '$dbDate' AND `user_id` = '$user_id' LIMIT 1";
 		$res = mysqli_query($conn, $sql);
 		if ($res) {
 			$row = mysqli_fetch_array($res);

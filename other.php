@@ -1,3 +1,8 @@
+<?php 
+    include 'loginCheck.php';
+    if (isset($_SESSION['loginStatus'])) {
+        if ($_SESSION['loginStatus'] == true) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,36 +26,7 @@
 <body>
 
     <main class="wrapper">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <header class="navbar-brand">
-                    <span>Dairy</span>
-                    <span class="bg-danger">Tracker</span>
-                </header>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="dashboard.html"> <i class="fas fa-home"></i> Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="data.html"><i class="fas fa-database"></i> Data</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="statistics.html"><i class="fas fa-chart-line"></i> Statistics</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="other.html"><i class="fas fa-box-open"></i> Other</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="settings.html"><i class="fas fa-cogs"></i> Settings</a>
-                        </li>
-                    </ul>
-                </div>
-          </div>
-        </nav>
+        <?php require 'assets/components/navbar.php'; ?>
 
         <section class="main-content">
             <div class="mt-5 row container-fluid d-flex justify-content-center">
@@ -126,3 +102,10 @@
     <script src="./assets/js/other.js"></script>
 </body>
 </html>
+<?php
+}
+}
+else {
+    echo "You seem lost";
+}
+?>

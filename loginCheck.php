@@ -12,12 +12,12 @@ session_start();
 			if ($username == $row['username'] && $password == $row['password']) {
 				$_SESSION['loginStatus'] = true;
 				$_SESSION['userID'] = $row['user_id'];
+				$_SESSION['userName'] = $row['username'];
 				header('location: dashboard.php');
 			}
 		}
 		else {
 			$_SESSION['msg'] = "Invalid Credentials";
-			$_SESSION['loginStatus'] = false;
 			header('location: index.php');
 		}
 	}

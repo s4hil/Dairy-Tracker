@@ -27,4 +27,7 @@
 	.sign-up-box {
 		width: 90%;
 	}
+	.sign-up-box > h3 {
+		font-size: .8rem;
+	}
 }

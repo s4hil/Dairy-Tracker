@@ -1,3 +1,8 @@
+<?php 
+    include 'loginCheck.php';
+    if (isset($_SESSION['loginStatus'])) {
+        if ($_SESSION['loginStatus'] == true) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,45 +15,21 @@
     <link rel="stylesheet" type="text/css" href="assets/css/settings.css">
     <link rel="stylesheet" type="text/css" href="assets/css/common.css">
     <style>
-        img[alt="www.000webhost.com"] {
-        	display: none !important;
+        .wrapper {
+            width: 100%;
         }
+        .main-content {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        
     </style>
 </head>
 <body>
 
     <main class="wrapper">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <header class="navbar-brand">
-                    <span>Dairy</span>
-                    <span class="bg-danger">Tracker</span>
-                </header>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="dashboard.html"> <i class="fas fa-home"></i> Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="data.html"><i class="fas fa-database"></i> Data</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="statistics.html"><i class="fas fa-chart-line"></i> Statistics</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="other.html"><i class="fas fa-box-open"></i> Other</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="settings.html"><i class="fas fa-cogs"></i> Settings</a>
-                        </li>
-                    </ul>
-                </div>
-          </div>
-        </nav>
-
+        <?php require 'assets/components/navbar.php'; ?>
         <section class="main-content">
             <div class="pt-5 row container-fluid d-flex justify-content-center">
                 <div class="col-12 col-sm-12 col-md-6 col-lg-4">
@@ -58,7 +39,16 @@
                             <label>Price Per Litre</label>
                             <input type="text" id="price" class="form-control">
                         </fieldset>
-                        <button class="form-control btn btn-primary" id="updatePrice">Update</button>
+                        <fieldset class="form-group">
+                            <label>Telegram Chat ID</label>
+                            <input type="text" id="chat-id" class="form-control">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label>Telegram Bot Token</label>
+                            <textarea type="text" id="token" class="form-control" rows="2"></textarea>
+                        </fieldset>
+                        <button class="form-control btn btn-success" id="addSettings">Add</button>
+                        <button class="form-control btn btn-primary" id="updateSettings">Update</button>
                     </form><br>
                     <div class="msg"></div>
                 </div>
@@ -74,3 +64,10 @@
     <script src="./assets/js/settings.js"></script>
 </body>
 </html>
+<?php
+}
+}
+else {
+    echo "You seem lost!";
+}
+?>

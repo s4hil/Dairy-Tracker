@@ -1,12 +1,14 @@
 <?php
 	include 'config.php';
+	include '../../loginCheck.php';
 	header('Access-Control-Allow-Origin');
 	$data = json_decode(file_get_contents("php://input"), true);
 
 	$month = $data['month'];
 	$totalLitres = 0;
+	$user_id = $_SESSION['userID'];
 
-	$sql = "SELECT * FROM `dairy_records` WHERE `month` = '$month'";
+	$sql = "SELECT * FROM `dairy_records` WHERE `month` = '$month' AND `user_id` = '$user_id'";
 	$res = mysqli_query($conn, $sql);
 	if ($res) {
 		if (mysqli_num_rows($res) == 0) {
@@ -26,10 +28,10 @@
 			$response['monthYear'] = $monthYear;
 			$response['totalLitres'] = $totalLitres;
 
-			$res2 = mysqli_query($conn, "SELECT * FROM `tracker_config` WHERE `name` = 'litrePrice'");
+			$res2 = mysqli_query($conn, "SELECT LPV FROM `tracker_config` WHERE `user_id` = '$user_id'");
 			$config = mysqli_fetch_array($res2);
 
-			$litrePrice = $config['prop1Val'];
+			$litrePrice = $config['LPV'];
 
 			$response['litrePrice'] = $litrePrice;
 			$response['totalMoney'] = $litrePrice * $totalLitres;

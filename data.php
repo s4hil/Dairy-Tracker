@@ -1,3 +1,8 @@
+<?php 
+    include 'loginCheck.php';
+    if (isset($_SESSION['loginStatus'])) {
+        if ($_SESSION['loginStatus'] == true) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +52,7 @@
                 </div>
                 <div class="col-12 col-sm-12 col-lg-8 col-md-4 table-col">
                     <h3 class="alert alert-success text-center">Data Table</h3>
-                    <button id="exportData" class="btn btn-warning mb-2">Export As Excel</button>
+                    <a href="exportData.php" target="_blank" class="btn btn-warning mb-2">Export All As Excel</a>
                     <table class="table table-striped" id="main-table">
                         <thead class="table-dark text-white">
                             <tr>
@@ -107,3 +112,10 @@
     <script src="./assets/js/data.js"></script>
 </body>
 </html>
+<?php
+}
+}
+else {
+    echo "You seem lost!";
+}
+?>
