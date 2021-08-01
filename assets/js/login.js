@@ -1,29 +1,11 @@
-$(".login").click( (e) => {
-	e.preventDefault();
-
+function validateLogin() {
 	let un = $("#username").val();
 	let pw = $("#password").val();
-
-	let data = { name:un, pw:pw };
-	let dataJSON = JSON.stringify(data);
-
-	$.ajax({
-		url: "assets/php/checkLogin.php",
-		method: "POST",
-		data: dataJSON,
-		success: function (response) {
-			login = response;
-			if (login == "true") {
-				sessionStorage.setItem('loginStatus', 'true');
-				window.location = "dashboard.html";
-			}
-			else {
-				$(".form")[0].reset();
-				alert("Invald Credentials!");
-			}
-		},
-		error: function() {
-			console.log("Err with login req.");
-		}
-	});
-});
+	if (un == "" || pw == "") {
+		alert("Both Fields Are Required!");
+		return false;
+	}
+	else {
+		return true;
+	}
+}

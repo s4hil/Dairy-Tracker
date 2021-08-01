@@ -1,14 +1,5 @@
 $(document).ready(()=>{
 
-	// Check if the user is logged in
-	function checkLogin() {
-		if (sessionStorage.getItem('loginStatus') != 'true') {
-			$(".wrapper").remove();
-		}
-	}
-	checkLogin();
-
-
 	$(".load").click((e)=>{
 		e.preventDefault();
 
@@ -92,5 +83,16 @@ $(document).ready(()=>{
 	// Hide modal
 	$("#close-modal").click(()=>{
 		$("#summary-modal").modal('hide');
+	});
+
+	// Export data as excel
+	$("#exportData").click(()=>{
+		$("#main-table").table2excel({
+
+
+
+			exclude: ".noExport",
+			filename: "a",
+		});
 	});
 }); //main

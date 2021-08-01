@@ -8,11 +8,6 @@
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/index.css">
     <link rel="icon" href="assets/imgs/favicon.png">
-    <style>
-        img[alt="www.000webhost.com"] {
-        	display: none !important;
-        }
-    </style>
 </head>
 <body>
 
@@ -22,20 +17,37 @@
                 <span>Dairy</span>
                 <span class="bg-danger">Tracker</span>
             </h2>
-            <form class="form">
+
+
+            <form class="form" onsubmit="return validateLogin();" action="loginCheck.php" method="POST">
                 <fieldset class="form-group">
                     <label>Username</label>
-                    <input type="text" id="username" class="form-control">
+                    <input type="text" id="username" class="form-control" name="username">
                 </fieldset>
                 <fieldset class="form-group">
                     <label>Password</label>
-                    <input type="password" id="password" class="form-control">
+                    <input type="password" id="password" class="form-control" name="password">
                 </fieldset>
                 <fieldset class="form-group">
-                    <button class="btn btn-success login float-right">Login</button>
+                    <input type="submit" name="login" class="btn btn-success float-right" value="Login">
                 </fieldset>
-
             </form>
+            <?php
+                include 'loginCheck.php';
+                if (isset($_SESSION['msg'])) {
+                    ?>
+                        <div class="alert alert-danger text-center">
+                            <?php
+                                echo $_SESSION['msg'];
+                                unset($_SESSION['msg']);
+                            ?>
+                        </div>
+                    <?php
+                }
+            ?>
+            <p align="center">
+                <a href="signUp.php"><b>Create Account?<b></a>
+            </p>
         </div>
     </main>
 

@@ -9,46 +9,11 @@
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/data.css">
     <link rel="stylesheet" type="text/css" href="assets/css/common.css">
-    <style>
-        img[alt="www.000webhost.com"] {
-        	display: none !important;
-        }
-    </style>
 </head>
 <body>
 
     <main class="wrapper">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <header class="navbar-brand">
-                    <span>Dairy</span>
-                    <span class="bg-danger">Tracker</span>
-                </header>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="dashboard.html"> <i class="fas fa-home"></i> Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="data.html"><i class="fas fa-database"></i> Data</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="statistics.html"><i class="fas fa-chart-line"></i> Statistics</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="other.html"><i class="fas fa-box-open"></i> Other</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="settings.html"><i class="fas fa-cogs"></i> Settings</a>
-                        </li>
-                    </ul>
-                </div>
-          </div>
-        </nav>
-
+        <?php require 'assets/components/navbar.php'; ?>
         <section class="main-content container-fluid">
             <div class="row d-flex justify-content-center mt-5">
                 <div class="col-12 col-sm-12 col-lg-4 col-md-4 form-col">
@@ -82,7 +47,8 @@
                 </div>
                 <div class="col-12 col-sm-12 col-lg-8 col-md-4 table-col">
                     <h3 class="alert alert-success text-center">Data Table</h3>
-                    <table class="table table-striped">
+                    <button id="exportData" class="btn btn-warning mb-2">Export As Excel</button>
+                    <table class="table table-striped" id="main-table">
                         <thead class="table-dark text-white">
                             <tr>
                                 <th>S.no</th>
@@ -137,6 +103,7 @@
     <script src="https://kit.fontawesome.com/de41999cf3.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/jquery.table2excel.min.js"></script>
     <script src="./assets/js/data.js"></script>
 </body>
 </html>
