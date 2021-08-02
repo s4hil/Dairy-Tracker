@@ -2,7 +2,7 @@
 session_start();
 	if (isset($_POST['login'])) {
 		include 'assets/php/config.php';
-		$username = mysqli_real_escape_string($conn, clean($_POST['username']));
+		$username = mysqli_real_escape_string($conn, clean(strtolower($_POST['username'])));
 		$password = mysqli_real_escape_string($conn, clean($_POST['password']));
 
 		$sql = "SELECT * FROM `users` WHERE `username` = '$username' LIMIT 1";

@@ -17,7 +17,7 @@
 </head>
 <body>
 
-    <main class="wrapper">
+    <main class="wrapper container-fluid">
         <?php require 'assets/components/navbar.php'; ?>
         <section class="main-content container-fluid">
             <div class="row d-flex justify-content-center mt-5">
@@ -51,6 +51,7 @@
                     </form>
                 </div>
                 <div class="col-12 col-sm-12 col-lg-8 col-md-4 table-col">
+                    <br><br>
                     <h3 class="alert alert-success text-center">Data Table</h3>
                     <a href="exportData.php" target="_blank" class="btn btn-warning mb-2">Export All As Excel</a>
                     <table class="table table-striped" id="main-table">

@@ -17,7 +17,7 @@
 </head>
 <body>
 
-    <main class="wrapper">
+    <main class="wrapper container-fluid">
         <?php require 'assets/components/navbar.php'; ?>
         <section class="main-content container-fluid">
             <div class="row mt-5 d-flex justify-content-center">

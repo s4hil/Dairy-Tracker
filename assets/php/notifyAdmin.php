@@ -1,12 +1,39 @@
 <?php
 	
-	$db_host = "localhost";
-	$db_user = "u883347914_thealphacoder";
-	$db_pass = "Alpha@675";
-	$db_name = "u883347914_dairy_tracker";
+$db_host = "localhost";
+$db_user = "u883347914_thealphacoder";
+$db_pass = "Alpha@675";
+$db_name = "u883347914_dairy_tracker";
 
-	$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die('Failed to connect');
-	
+$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name) or die('Failed to connect');
+
+function sendMessage($chatID, $messaggio, $token) {
+
+    $url = "https://api.telegram.org/bot" . $token . "/sendMessage?chat_id=" . $chatID;
+    $url = $url . "&text=" . urlencode($messaggio);
+    $ch = curl_init();
+    $optArray = array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true
+    );
+    curl_setopt_array($ch, $optArray);
+    $result = curl_exec($ch);
+    curl_close($ch);
+    return $result;
+}
+
+function getUserName($id)
+{
+	global $conn;
+	$sql = "SELECT * FROM `users` WHERE `user_id` = '$id'";
+	$res = mysqli_query($conn, $sql);
+	$user = mysqli_fetch_array($res);
+	$userName = $user['username'];
+	return ucfirst($userName);
+}
+
+function fetchDate()
+{
 	$today = date('d/m/Y');
 	$todayArr = explode('/', $today);
 
@@ -20,34 +47,32 @@
 		$month = str_replace('0', '', $month);
 	}
 
-	$date = $day."/".$month."/".$year;
+	return $day."/".$month."/".$year;
+}
+?>
 
-	$sql = "SELECT * FROM `dairy_records` WHERE `date` = '$date'";
+<?php
+
+	$sql = "SELECT * FROM `tracker_config`";
 	$res = mysqli_query($conn, $sql);
-	if (mysqli_num_rows($res) == 0) {
-		function sendMessage($chatID, $messaggio, $token) {
+	while ($config = mysqli_fetch_array($res)) {
+		
+		$user_id = $config['user_id'];
+		$date = fetchDate();
 
-	    $url = "https://api.telegram.org/bot" . $token . "/sendMessage?chat_id=" . $chatID;
-	    $url = $url . "&text=" . urlencode($messaggio);
-	    $ch = curl_init();
-	    $optArray = array(
-	            CURLOPT_URL => $url,
-	            CURLOPT_RETURNTRANSFER => true
-	    );
-	    curl_setopt_array($ch, $optArray);
-	    $result = curl_exec($ch);
-	    curl_close($ch);
-	    return $result;
+		$checkRecs = "SELECT * FROM `dairy_records` WHERE `user_id` = '$user_id' AND `date` = '$date'";
+		$resCheckRecs = mysqli_query($conn, $checkRecs);
+		if (mysqli_num_rows($resCheckRecs) == 0) {
+
+			$name = getUserName($config['user_id']);
+			$chatID = $config['telegram_chat_id'];
+			$token = $config['telegram_auth_token'];
+			$msg = "Dear ". $name .", You've not added the entry of the day: ".$date.". 
+			
+			Regards, 
+			Alpha Coder.";
+			sendMessage($chatID, $msg, $token);
+		}
 	}
 
-	$token = "1865104022:AAEeJ7pAFI9XH42J3rL1nfhjS9itcMM8a04";
-	$chatid = "1149842523";
-
-	$msg = "Dear User, You've not added the entry of the day: ".$date.", Regards, Alpha Coder.";
-
-	sendMessage($chatid, $msg, $token);
-	}
-	else {
-		echo "Rec found";
-	}
 ?>
