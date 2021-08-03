@@ -7,6 +7,9 @@
 	$password = clean(mysqli_real_escape_string($conn, $data['password']));
 	$email = clean(mysqli_real_escape_string($conn, $data['email']));
 
+	$username = strtolower($username);
+	$password = strtolower($password);
+
 	$sql = "INSERT INTO `users` (`username`, `password`, `email`) 
 			VALUES ('$username', '$password', '$email')";
 
