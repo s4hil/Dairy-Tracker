@@ -1,5 +1,5 @@
 $(document).ready(()=>{
-	
+
 	// Add item record
 	$(".addItem").click((e)=>{
 		e.preventDefault();
@@ -34,6 +34,7 @@ $(document).ready(()=>{
 		let month = $("#month").val();
 		let data = { month:month };
 		let dataJSON = JSON.stringify(data);		
+		let output = "";
 
 		$.ajax({
 			url: "assets/php/fetchPurchasedItems.php",
@@ -41,7 +42,6 @@ $(document).ready(()=>{
 			data: dataJSON,
 			dataType: "json",
 			success: function (data) {
-				let output = "";
 				x = data;
 				for(let i = 0; i < x.length; i++){
 					output += "<tr><td>"+ x[i].date +"</td><td>"+ x[i].item +"</td><td>"+ x[i].quantity +"</td><td><button class='btn btn-danger del-item' item-id='"+ x[i].id +"'>Delete</button></td></tr>";

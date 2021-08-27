@@ -14,6 +14,15 @@
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/data.css">
     <link rel="stylesheet" type="text/css" href="assets/css/common.css">
+    <style>
+        .wrapper {
+            padding: 0px;
+        }
+        .row {
+            padding: 20px;
+            padding-top: 0px;
+        }
+    </style>
 </head>
 <body>
 

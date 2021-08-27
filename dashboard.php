@@ -14,9 +14,17 @@
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
     <link rel="stylesheet" type="text/css" href="assets/css/common.css">
+    <style>
+        .wrapper {
+            padding: 0px;
+        }
+        .row {
+            padding: 20px;
+            padding-top: 0px;
+        }
+    </style>
 </head>
 <body>
-
     <main class="wrapper container-fluid">
         <?php require 'assets/components/navbar.php'; ?>
         <section class="main-content container-fluid">
