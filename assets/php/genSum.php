@@ -9,17 +9,10 @@
 	$month = $data['month'];
 	$year = $data['year'];
 
-
-	// $month = 7;
-	// $year = 2021;
-	
-
 	$totalLitres = 0;
 	$user_id = $_SESSION['userID'];
 
-	// print_r($user_id);
-
-	if (!empty($data) || 1 == 1){
+	if (!empty($data)){
 
 		$sql = "SELECT * FROM `dairy_records` WHERE `user_id` = '1' AND `year` = '$year' AND `month` = '$month'";
 		$res = mysqli_query($conn, $sql);

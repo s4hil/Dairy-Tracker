@@ -15,5 +15,4 @@
 		$response = "Failed To Delete!";
 	}
 	echo json_encode($response);
-
 ?>

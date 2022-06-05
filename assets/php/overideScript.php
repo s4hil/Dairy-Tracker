@@ -1,5 +1,6 @@
 <?php
-	
+	// Override Records Script
+
 	$db_host = "localhost";
 	$db_user = "root";
 	$db_pass = "";
