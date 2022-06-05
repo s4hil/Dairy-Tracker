@@ -47,7 +47,7 @@
                     </form>
                 </div>
                 <div class="col-12 col-lg-8 col-sm-12 col-md-12 table-col">
-                    <h3 class="alert alert-info text-center">Current Month: <span id="date-label"></span></h3>
+                    <h3 class="alert alert-info text-center">Date: <span id="date-label"></span></h3>
                     <table class="table table-striped">
                         <thead class="table-dark text-white">
                             <tr>

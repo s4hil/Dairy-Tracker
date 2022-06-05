@@ -19,9 +19,10 @@
 	else {
 		$dateArray = explode('/', $date);
 		$month = $dateArray[1];
+		$year = $dateArray[2];
 
 		$quantity = $data['quantity'];
-		$sql = "INSERT INTO `dairy_records` (`date`, `month`,`quantity`, `user_id`) VALUES ('$date', '$month','$quantity', '$user_id')";
+		$sql = "INSERT INTO `dairy_records` (`date`, `month`, `year`,`quantity`, `user_id`) VALUES ('$date', '$month','$year' ,'$quantity', '$user_id')";
 		$res = mysqli_query($conn, $sql);
 		if ($res) {
 			$response = "Record Added!";
@@ -31,6 +32,5 @@
 		}
 
 	}
-	
 	echo json_encode($response);
 ?>

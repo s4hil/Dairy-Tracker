@@ -9,10 +9,11 @@
 	$dateArray = explode('/', $date);
 
 	$month = $dateArray[1];
+	$year = $dateArray[2];
 
 	$response = array();
 	$user_id = $_SESSION['userID'];
-	$sql = "SELECT * FROM `dairy_records` WHERE `month` = '$month' AND `user_id` = '$user_id'";
+	$sql = "SELECT * FROM `dairy_records` WHERE `month` = '$month' AND `year` = '$year' AND `user_id` = '$user_id'";
 	$res = mysqli_query($conn, $sql);
 
 	while ($row = mysqli_fetch_array($res)) {
