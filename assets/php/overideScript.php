@@ -22,6 +22,5 @@
 	}
 	else {
 		echo json_encode("not Saved");
-
 	}
 ?>

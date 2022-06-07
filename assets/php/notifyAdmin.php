@@ -74,5 +74,4 @@ function fetchDate()
 			sendMessage($chatID, $msg, $token);
 		}
 	}
-
 ?>

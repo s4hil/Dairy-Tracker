@@ -1,5 +1,6 @@
 <?php
-	
+	// Custom fetch by month
+
 	include 'config.php';
 	include '../../loginCheck.php';
 	header('Access-Control-Allow-Origin');
@@ -15,7 +16,5 @@
 	while($row = mysqli_fetch_array($res)){
 		$response[] = $row;
 	}
-
 	echo json_encode($response);
-
 ?>

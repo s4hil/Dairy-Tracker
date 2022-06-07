@@ -65,8 +65,6 @@
                 error: function (){
                     console.log("err with req");
                 }
-
-
             });
         });
     </script>
