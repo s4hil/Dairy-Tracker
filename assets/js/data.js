@@ -32,6 +32,9 @@ $(document).ready(()=>{
 	$(".genSum").click((e)=>{
 		e.preventDefault();
 
+		let now = new Date();
+		let year = now.getFullYear();
+
 		// Reset Fields
 		$("#purchased-items").html("");
 		$("#sold-items").html("");
@@ -50,7 +53,7 @@ $(document).ready(()=>{
 			success: function (data) {
 				x = data;
 				
-				$("#monthYear").text(month+"/2021");
+				$("#monthYear").text(month + "/" + year);
 
 				if(x.tbl_err === 1){
 					$("#error-1").text('No Monthly Record Found!');
