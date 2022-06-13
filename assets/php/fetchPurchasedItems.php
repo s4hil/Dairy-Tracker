@@ -5,10 +5,11 @@
 	$data = json_decode(file_get_contents("php://input"), true);
 
 	$month = $data['month'];
+	$year = date('Y');
 	$user_id = $_SESSION['userID'];
 
 	$response = array();
-	$sql = "SELECT * FROM `purchased_items` WHERE `month` = '$month' AND `user_id` = '$user_id' ORDER BY `date` ASC";
+	$sql = "SELECT * FROM `purchased_items` WHERE `month` = '$month' AND `user_id` = '$user_id' AND `year` = '$year' ORDER BY `date` ASC";
 	$res = mysqli_query($conn, $sql);
 	while ($row = mysqli_fetch_array($res)) {
 		$response[] = $row;

@@ -11,9 +11,10 @@
 
 	$dateArray = explode('-', $date);
 	$month = $dateArray[1];
+	$year = $dateArray[0];
 
-	$sql = "INSERT INTO `purchased_items` (`date`, `month`, `item`, `quantity`, `user_id`) 
-			VALUES('$date','$month','$item','$quantity', '$user_id')";
+	$sql = "INSERT INTO `purchased_items` (`date`, `month`, `year`, `item`, `quantity`, `user_id`) 
+			VALUES('$date','$month', '$year','$item','$quantity', '$user_id')";
 	$res = mysqli_query($conn, $sql);
 	if ($res) {
 		$response = "Item Added!";
