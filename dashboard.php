@@ -1,3 +1,8 @@
+<?php 
+    include 'loginCheck.php';
+    if (isset($_SESSION['loginStatus'])) {
+        if ($_SESSION['loginStatus'] == true) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,36 +56,7 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody id="table-body">
-                        	<tr>
-                        		<td>11/6/2023</td>
-                        		<td>5</td>
-                        		<td>
-                        			<button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
-                        		</td>                         		
-                        	</tr>
-                        	<tr>
-                        		<td>10/6/2023</td>
-                        		<td>5.5</td>
-                        		<td>
-                        			<button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
-                        		</td>  
-                        	</tr>
-                        	<tr>
-                        		<td>09/6/2023</td>
-                        		<td>8</td>
-                        		<td>
-                        			<button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
-                        		</td>  
-                        	</tr>
-                        	<tr>
-                        		<td>08/6/2023</td>
-                        		<td>9</td>
-                        		<td>
-                        			<button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
-                        		</td> 
-                        	</tr>
-                        </tbody>
+                        <tbody id="table-body"></tbody>
                     </table>
                 </div>
             </div>
@@ -117,3 +93,11 @@
     <script src="./assets/js/dashboard.js"></script>
 </body>
 </html>
+<?php
+}
+}
+else {
+    echo "You seem lost!";
+}
+
+?>
